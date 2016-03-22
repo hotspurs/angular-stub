@@ -2,4 +2,8 @@ extends ./_layout.jade
 
 block content
   h1 Angular
-  ui-view
+  ul
+    each val in ['main', 'about']
+      li
+        a(ui-sref="#{val}") #{val}
+  div(ui-view)

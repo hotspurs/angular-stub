@@ -1,7 +1,12 @@
 'use strict';
 
-import angular from 'angular';
+const angular = require('angular');
 
-angular.module('app', [require('angular-ui-router'), require('oclazyload')])
+require('ng-dialog/js/ngDialog.js');
+require('ng-dialog/css/ngDialog.css');
+
+angular.module('app', [require('angular-ui-router'), require('oclazyload'), 'ngDialog'])
   .config(require('./app.config'))
-  .config(require('./pages/main/main.config'));
+  .config(require('./pages/main/main.config'))
+  .config(require('./pages/about/about.config'))
+  .service('popups', require('./popups/popups.js'));
