@@ -1,3 +1,5 @@
+require('./popups.styl');
+
 module.exports = function(ngDialog){
   'ngInject';
 

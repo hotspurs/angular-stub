@@ -1,6 +1,8 @@
 'use strict';
-
+const jquery = require('jquery'); // добиться чтобы anuglar заменить jQ Lite на нормальный angular object;
+window.$ = window.jQuery = jquery;
 const angular = require('angular');
+
 
 require('ng-dialog/js/ngDialog.js');
 require('ng-dialog/css/ngDialog.css');

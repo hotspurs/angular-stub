@@ -495,6 +495,8 @@
                             resolve[key] = angular.isString(value) ? $injector.get(value) : $injector.invoke(value, null, null, key);
                         });
 
+
+
                         $q.all({
                             template: loadTemplate(options.template || options.templateUrl),
                             locals: $q.all(resolve)
@@ -588,9 +590,14 @@
                                 $dialog.data('$ngDialogControllerController', controllerInstance);
                             }
 
+
+
+
                             $timeout(function () {
                                 var $activeDialogs = document.querySelectorAll('.ngdialog');
                                 privateMethods.deactivateAll($activeDialogs);
+
+
 
                                 $compile($dialog)(scope);
                                 var widthDiffs = $window.innerWidth - $elements.body.prop('clientWidth');
@@ -600,7 +607,12 @@
                                 if (scrollBarWidth > 0) {
                                     privateMethods.setBodyPadding(scrollBarWidth);
                                 }
+
+
+
                                 $dialogParent.append($dialog);
+
+
 
                                 privateMethods.activate($dialog);
 
@@ -614,6 +626,8 @@
                                     $rootScope.$broadcast('ngDialog.opened', $dialog);
                                 }
                             });
+  
+                                                        
 
                             if (!keydownIsBound) {
                                 $elements.body.bind('keydown', privateMethods.onDocumentKeydown);
@@ -632,7 +646,7 @@
                             }
 
                             closeByDocumentHandler = function (event) {
-                                //var isContent = $el(event.target).closest('.popup').length; //Поправить
+                                var isContent = $el(event.target).closest('.popup').length;
                                 var isContent = false;
                                 var isOverlay = options.closeByDocument ? !isContent : false;
                                 var isCloseBtn = $el(event.target).hasClass('ngdialog-close');
