@@ -6,8 +6,9 @@ module.exports = function($urlRouterProvider, ngDialogProvider){
   ngDialogProvider.setDefaults({
     plain: true,
     ariaAuto: false,
-    disableAnimation: true,
+    disableAnimation: false,
     trapFocus: false,
+    closeByDocuments: true
   });
 
 };

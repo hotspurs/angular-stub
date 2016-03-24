@@ -93,7 +93,8 @@
 }
 
 .ngdialog-content {
-  position : relative
+  position : relative;
+  text-align: center;
 }
 
 .ngdialog-center {

@@ -41,6 +41,7 @@
     m.provider('ngDialog', function () {
         var defaults = this.defaults = {
             className: 'ngdialog-theme-default',
+            contentClass: 'popup',
             disableAnimation: false,
             plain: false,
             showClose: true,
@@ -170,16 +171,20 @@
 
                             $dialog.addClass('ngdialog-closing');
 
-                            /*
+                            
                             $timeout(function(){
-                              options.animationEndPromise.then(function(){
-                                
-                              });
+
+                              if(options.animationEndPromise){
+                                options.animationEndPromise.then(function(){
+                                  privateMethods.closeDialogElement($dialog, value);
+                                });
+                              } else{
+                                privateMethods.closeDialogElement($dialog, value);
+                              }
+
+
                             }, 0);
-                            */
-
-                            privateMethods.closeDialogElement($dialog, value);
-
+                            
                         } else {
                             scope.$destroy();
                             privateMethods.closeDialogElement($dialog, value);
@@ -622,6 +627,7 @@
 
                                 if (options.name) {
                                     $rootScope.$broadcast('ngDialog.opened', {dialog: $dialog, name: options.name});
+
                                 } else {
                                     $rootScope.$broadcast('ngDialog.opened', $dialog);
                                 }
@@ -646,8 +652,7 @@
                             }
 
                             closeByDocumentHandler = function (event) {
-                                var isContent = $el(event.target).closest('.popup').length;
-                                var isContent = false;
+                                var isContent = $el(event.target).closest('.'+options.contentClass).length;
                                 var isOverlay = options.closeByDocument ? !isContent : false;
                                 var isCloseBtn = $el(event.target).hasClass('ngdialog-close');
 
