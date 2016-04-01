@@ -14,7 +14,6 @@
     "angular-animate": "1.5.2",
     "angular-ui-router": "0.2.18",
     "jquery": "1.12.2",
-    "ng-dialog": "0.5.9",
     "oclazyload": "1.0.9"
   },
   "devDependencies": {
